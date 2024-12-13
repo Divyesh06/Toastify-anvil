@@ -1,0 +1,6 @@
+components: []
+container:
+  properties:
+    html: "<div anvil-name = \"toaster-container\" class=\"toaster-wrapper\">\n   \n</div>"
+  type: HtmlTemplate
+is_package: true
