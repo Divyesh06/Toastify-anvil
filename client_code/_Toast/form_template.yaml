@@ -1,0 +1,31 @@
+components: []
+container:
+  properties:
+    html: |
+      <div class="toast" anvil-name="toast">
+          <div class="toast-body">
+              <div style="display: flex">
+                  <div anvil-name="toast-icon" class="toast-icon">
+                      <svg viewBox="0 0 24 24" width="20px" height="100%">
+                          <path anvil-name="toast-icon-path"></path>
+                      </svg>
+                  </div>
+
+                  <div anvil-name="toast-loading" class="toast-loading"></div>
+                  <div anvil-name="toast-text" class="toast-text"></div>
+              </div>
+              <section>
+                  <div anvil-name="toast-close" class="toast-close">
+                      <svg aria-hidden="true" viewBox="0 0 14 16" width="14px">
+                          <path
+                              fill-rule="evenodd"
+                              d="M7.71 8.23l3.75 3.75-1.48 1.48-3.75-3.75-3.75 3.75L1 11.98l3.75-3.75L1 4.48 2.48 3l3.75 3.75L9.98 3l1.48 1.48-3.75 3.75z"
+                          ></path>
+                      </svg>
+                  </div>
+              </section>
+          </div>
+          <div anvil-name="toast-progress" class="toast-progress"></div>
+      </div>
+  type: HtmlTemplate
+is_package: true
