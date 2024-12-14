@@ -1,7 +1,7 @@
-from anvil import *
 from .Toaster import Toaster
 from anvil.js.window import document, setTimeout
 from . import styles_data
+import anvil
 
 positions = {
     'top-right': {"animation": "bounceInRight"},
@@ -28,17 +28,20 @@ for position in positions:
     document.body.appendChild(container)
 
 class Toast:
-    def __init__(self, message, style="info", timeout = 2, title="", close_on_exit=False,position="top-right"): #Title is added just to migrate from Notifications and does not actually show
+    def __init__(self, message, style="info", timeout = 2, title="", position="top-right"): #Title is added just to migrate from Notifications and does not actually show
         self.toaster = Toaster()  
-        self.close_on_exit = close_on_exit
+        self.position=position
         self.timeout=timeout
+        
         self.toaster.toaster_text.innerText = message
         self.set_style(style)
         self.toaster.toaster_progress.style.animationDuration=f"{self.timeout}s"
         self.toaster.toaster.style.animation=f"{positions[position]['animation']} 0.6s"
-        container = document.getElementsByClassName(f"toaster-{position}")[0]
+        self.show()
+
+    def show(self):
+        container = document.getElementsByClassName(f"toaster-{self.position}")[0]
         container.appendChild(self.toaster.toaster)
-        
         
     def __enter__(self):
         return self
@@ -76,3 +79,7 @@ class Toast:
             self.toaster.toaster_icon.style.display="none"
             self.toaster.toaster_loading.style.display="block"
             self.toaster.toaster_progress.style.display="none"
+
+def patch_anvil_notifications():
+    
+    anvil.Notification=Toast
