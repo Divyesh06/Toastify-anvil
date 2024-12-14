@@ -48,7 +48,7 @@ class Toast:
 
     def __exit__(self, *args, **kwargs):
         if self.close_on_exit:
-            self.close()
+            self.hide()
         
     def update(self,style=None,message=None):
         if style:
@@ -56,7 +56,7 @@ class Toast:
         if message:
             self.toaster.toaster_text.innerText=message
 
-    def close(self, *args):
+    def hide(self, *args):
         self.toaster.toaster.style.animation = "bounceOutRight 0.6s"
         
         def remove_toaster(*args):
@@ -73,7 +73,7 @@ class Toast:
             self.toaster.toaster_icon.style.fill = style['color']
             self.toaster.toaster_progress.style.background = style['color']
             self.toaster.toaster_icon_path.setAttribute("d",style['icon'])
-            setTimeout(self.close, self.timeout * 1000)
+            setTimeout(self.hide, self.timeout * 1000)
             
         else:
             self.toaster.toaster_icon.style.display="none"
