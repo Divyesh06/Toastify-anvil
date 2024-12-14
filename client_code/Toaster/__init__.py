@@ -11,4 +11,4 @@ class Toaster(ToasterTemplate):
         self.toaster_text = self.dom_nodes['toaster-text']
         self.toaster_icon_path = self.dom_nodes['toaster-icon-path']
         self.toaster_progress = self.dom_nodes['toaster-progress']
-        
+        self.toaster_loading = self.dom_nodes['toaster-loading']

@@ -1,20 +1,6 @@
 components: []
 container:
   properties:
-    html: |
-      <div class="toaster" anvil-name="toaster">
-          <div class="toaster-body">
-              <div anvil-name="toaster-icon" class="toaster-icon">
-                  <svg viewBox="0 0 24 24" width="100%" height="100%"><path anvil-name="toaster-icon-path"></path></svg>
-              </div>
-              <div anvil-name="toaster-text" class="toaster-text"></div>
-              <div class="toaster-close">
-                  <svg aria-hidden="true" viewBox="0 0 14 16">
-                      <path fill-rule="evenodd" d="M7.71 8.23l3.75 3.75-1.48 1.48-3.75-3.75-3.75 3.75L1 11.98l3.75-3.75L1 4.48 2.48 3l3.75 3.75L9.98 3l1.48 1.48-3.75 3.75z"></path>
-                  </svg>
-              </div>
-          </div>
-          <div anvil-name="toaster-progress" class="toaster-progress"></div>
-      </div>
+    html: "<div class=\"toaster\" anvil-name=\"toaster\">\n    <div class=\"toaster-body\">\n        <div anvil-name=\"toaster-icon\" class=\"toaster-icon\">\n            <svg viewBox=\"0 0 24 24\" width=\"100%\" height=\"100%\"><path anvil-name=\"toaster-icon-path\"></path></svg>\n        </div>\n        <div anvil-name=\"toaster-loading\" class=\"toaster-loading\"></div>\n        <div anvil-name=\"toaster-text\" class=\"toaster-text\"></div>\n        \n        <div class=\"toaster-close\">\n            <svg aria-hidden=\"true\" viewBox=\"0 0 14 16\" width=\"14px\">\n                <path fill-rule=\"evenodd\" d=\"M7.71 8.23l3.75 3.75-1.48 1.48-3.75-3.75-3.75 3.75L1 11.98l3.75-3.75L1 4.48 2.48 3l3.75 3.75L9.98 3l1.48 1.48-3.75 3.75z\"></path>\n            </svg>\n        </div>\n    </div>\n    <div anvil-name=\"toaster-progress\" class=\"toaster-progress\"></div>\n</div>\n"
   type: HtmlTemplate
 is_package: true

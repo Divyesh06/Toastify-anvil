@@ -1,5 +1,5 @@
 allow_embedding: false
-name: Toasters
+name: toastify
 native_deps:
   head_html: |-
     <head>
@@ -8,7 +8,7 @@ native_deps:
         href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
       />
     </head>
-package_name: Toasters
+package_name: toastify
 runtime_options:
   client_version: '3'
   server_spec: {base: python310-minimal}
@@ -18,5 +18,5 @@ services:
 - client_config: {}
   server_config: {}
   source: /runtime/services/tables.yml
-startup: {module: Form1, type: form}
+startup: {module: Playground, type: form}
 startup_form: null

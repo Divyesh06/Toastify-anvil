@@ -1,0 +1,74 @@
+components:
+- components:
+  - components:
+    - layout_properties: {}
+      name: label_1_copy_copy_copy
+      properties: {bold: true, font_size: 16, text: Text}
+      type: Label
+    - layout_properties: {expand: true, width: 43}
+      name: text_box_1_copy
+      properties: {text: Hello World from Toast!}
+      type: TextBox
+    layout_properties: {grid_position: 'QEXTTZ,NNWXGR'}
+    name: flow_panel_1_copy_copy_copy
+    properties: {gap: small, vertical_align: middle}
+    type: FlowPanel
+  - components:
+    - layout_properties: {}
+      name: label_1
+      properties: {bold: true, font_size: 16, text: Position}
+      type: Label
+    - layout_properties: {}
+      name: drop_down_1
+      properties:
+        items: [top-right, top-left, bottom-right, bottom-left, bottom-center, top-center, '']
+      type: DropDown
+    layout_properties: {grid_position: 'GNYNPJ,XVJJLI'}
+    name: flow_panel_1
+    properties: {gap: small, vertical_align: middle}
+    type: FlowPanel
+  - components:
+    - layout_properties: {}
+      name: label_1_copy
+      properties: {bold: true, font_size: 16, text: Style}
+      type: Label
+    - layout_properties: {}
+      name: drop_down_1_copy
+      properties:
+        items: [success, warning, loading, danger, info]
+      type: DropDown
+    layout_properties: {grid_position: 'HSWTCB,XAIOCM'}
+    name: flow_panel_1_copy
+    properties: {gap: small, vertical_align: middle}
+    type: FlowPanel
+  - components:
+    - layout_properties: {}
+      name: label_1_copy_copy
+      properties: {bold: true, font_size: 16, text: Timeout}
+      type: Label
+    - layout_properties: {width: 43}
+      name: text_box_1
+      properties: {text: '5', type: number}
+      type: TextBox
+    - layout_properties: {}
+      name: label_2
+      properties: {text: s}
+      type: Label
+    layout_properties: {grid_position: 'BCULCY,RIYCXB'}
+    name: flow_panel_1_copy_copy
+    properties: {gap: small, vertical_align: middle}
+    type: FlowPanel
+  - event_bindings: {click: button_1_click}
+    layout_properties: {grid_position: 'ARLZYX,SDCQAW'}
+    name: button_1
+    properties: {align: full, text: Show Toast}
+    type: Button
+  layout_properties: {slot: default}
+  name: content_panel
+  properties: {}
+  type: ColumnPanel
+container:
+  event_bindings: {show: form_show}
+  properties: {html: '@theme:standard-page.html'}
+  type: HtmlTemplate
+is_package: true
