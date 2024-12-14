@@ -1,5 +1,13 @@
 allow_embedding: false
 name: Toasters
+native_deps:
+  head_html: |-
+    <head>
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+      />
+    </head>
 package_name: Toasters
 runtime_options:
   client_version: '3'
@@ -10,5 +18,5 @@ services:
 - client_config: {}
   server_config: {}
   source: /runtime/services/tables.yml
-startup: {module: Toaster, type: form}
+startup: {module: Form1, type: form}
 startup_form: null

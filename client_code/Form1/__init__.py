@@ -8,4 +8,4 @@ class Form1(Form1Template):
         self.init_components(**properties)
 
     def form_show(self, **event_args):
-        toast.Toast()
+        toast.Toast("Your request was complete", style="success", timeout=5)
