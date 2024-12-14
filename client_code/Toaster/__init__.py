@@ -9,5 +9,6 @@ class Toaster(ToasterTemplate):
         self.toaster = self.dom_nodes['toaster']
         self.toaster_icon = self.dom_nodes['toaster-icon']
         self.toaster_text = self.dom_nodes['toaster-text']
-        self.toaster_icon_path= = self.dom_nodes['toaster-icon-path']
+        self.toaster_icon_path = self.dom_nodes['toaster-icon-path']
+        self.toaster_progress = self.dom_nodes['toaster-progress']
         
