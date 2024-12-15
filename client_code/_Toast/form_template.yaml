@@ -4,7 +4,7 @@ container:
     html: |
       <div class="toast" anvil-name="toast">
           <div class="toast-body">
-              <div style="display: flex">
+              <div style="display: flex; align-items: flex-start">
                   <div anvil-name="toast-icon" class="toast-icon">
                       <svg viewBox="0 0 24 24" width="20px" height="100%">
                           <path anvil-name="toast-icon-path"></path>

@@ -35,8 +35,7 @@
 .toast-icon {
     width: 20px;
     display: flex;
-    align-items: flex-start;
-    margin-top: 5px;
+    margin-top: 1px;
     margin-right: 10px;
 }
 .toast-close {
