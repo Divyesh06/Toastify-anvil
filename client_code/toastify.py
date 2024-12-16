@@ -138,7 +138,8 @@ class Toast:
             self.toast.toast_icon.style.fill = style["color"]
             self.toast.toast_progress.style.background = style["color"]
             self.toast.toast_icon_path.setAttribute("d", style["icon"])
-            setTimeout(self.hide, self.timeout * 1000)
+            self.toast.toast_progress.onanimationend=self.hide
+          #  setTimeout(self.hide, self.timeout * 1000)
 
         else:
             self.toast.toast_icon.style.display = "none"
