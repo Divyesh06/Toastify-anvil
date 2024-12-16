@@ -90,7 +90,7 @@ class Toast:
             self.toast.toast.style.left = "initial"
             self.toast.toast.style.right = "initial"
         import time
-
+        
         time.sleep(0.1)
         self.disable_click = False
 
@@ -129,9 +129,8 @@ class Toast:
             def remove_toast(*args):
                 self.toast.toast.remove()
 
-            time.sleep(0.8)
-            remove_toast()
-            #self.toast.toast.onanimationend = remove_toast
+            setTimeout(remove_toast,800)
+            
 
     def set_style(self, style):
         if style != "loading":
