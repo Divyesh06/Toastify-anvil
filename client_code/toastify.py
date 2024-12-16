@@ -114,6 +114,8 @@ class Toast:
             self.toast.toast_text.innerText = message
 
     def hide(self, *args):
+        import time
+        
         if not self.disable_click:
             exit_animation = positions[self.position]["animation"].replace("In", "Out")
 
@@ -122,12 +124,14 @@ class Toast:
             elif "Down" in exit_animation:
                 exit_animation = exit_animation.replace("Down", "Up")
 
-            self.toast.toast.style.animation = f"{exit_animation} 0.6s"
-
+            self.toast.toast.style.animation = f"{exit_animation} 0.8s"
+            
             def remove_toast(*args):
                 self.toast.toast.remove()
 
-            self.toast.toast.onanimationend = remove_toast
+            time.sleep(0.8)
+            remove_toast()
+            #self.toast.toast.onanimationend = remove_toast
 
     def set_style(self, style):
         if style != "loading":
