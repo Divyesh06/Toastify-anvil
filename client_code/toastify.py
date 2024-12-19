@@ -17,6 +17,7 @@ swipe_dismiss_threshold = 200
 
 for position in positions:
     container = document.createElement("div")
+    container.style.display = "none"
     container.className = f"toaster-container toaster-{position}"
     y, x = position.split("-")
     container.style.setProperty(y, "0")
@@ -99,8 +100,9 @@ class Toast:
         self._end_drag(e.touches[0])
 
     def show(self):
-        container = document.getElementsByClassName(f"toaster-{self.position}")[0]
-        container.appendChild(self.toast.toast)
+        self.container = document.getElementsByClassName(f"toaster-{self.position}")[0]
+        self.container.style.display="block"
+        self.container.appendChild(self.toast.toast)
 
     def __enter__(self):
         return self
@@ -129,6 +131,8 @@ class Toast:
             
             def remove_toast(*args):
                 self.toast.toast.remove()
+                if not self.container.children.length:
+                    self.container.style.display="none"
 
             setTimeout(remove_toast,800)
             
