@@ -1,5 +1,5 @@
 from ._Toast import _Toast
-from anvil.js.window import document, setTimeout
+from anvil.js.window import document, setTimeout,clearTimeout
 from anvil.js import window
 from . import styles_data
 import anvil
@@ -37,6 +37,7 @@ class Toast:
     def __init__(
         self, message, style="info", timeout=2, title="", position="top-right"
     ):
+        self.timer = None
         self.toast = _Toast()
         self.position = position
         self.timeout = timeout
@@ -131,7 +132,12 @@ class Toast:
 
             setTimeout(remove_toast,800)
             
-
+    def update_progress(self,progress):
+        self.toast.toast_progress.style.animation="none"
+        self.toast.toast_progress.style.width = f"{progress*100}%"
+        if self.timer:
+            clearTimeout(self.timer)
+        
     def set_style(self, style):
         if style != "loading":
             self.toast.toast_progress.style.display = "block"
@@ -141,8 +147,8 @@ class Toast:
             self.toast.toast_icon.style.fill = style["color"]
             self.toast.toast_progress.style.background = style["color"]
             self.toast.toast_icon_path.setAttribute("d", style["icon"])
-            setTimeout(self.hide, self.timeout * 1000)
-
+            self.timer = setTimeout(self.hide, self.timeout * 1000)
+            
         else:
             self.toast.toast_icon.style.display = "none"
             self.toast.toast_loading.style.display = "block"
