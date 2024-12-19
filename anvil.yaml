@@ -22,5 +22,5 @@ services:
 - client_config: {}
   server_config: {}
   source: /runtime/services/tables.yml
-startup: {module: _Toast, type: form}
+startup: {module: Form1, type: form}
 startup_form: null
