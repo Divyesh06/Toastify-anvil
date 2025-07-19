@@ -1,88 +1,84 @@
-# About This [Anvil](https://anvil.works/?utm_source=github:app_README) App
+# Toastify for Anvil
 
-### Build web apps with nothing but Python.
+Inspired By [React-toastify](https://fkhadra.github.io/react-toastify/introduction/), I decided to create something similar for Anvil. Toast components can be a beautiful replacement for default Anvil Notifications
 
-The app in this repository is built with [Anvil](https://anvil.works?utm_source=github:app_README), the framework for building web apps with nothing but Python. You can clone this app into your own Anvil account to use and modify.
+___
+Test Playground to test it out https://anvil-toastify.anvil.app/
 
-Below, you will find:
-- [How to open this app](#opening-this-app-in-anvil-and-getting-it-online) in Anvil and deploy it online
-- Information [about Anvil](#about-anvil)
-- And links to some handy [documentation and tutorials](#tutorials-and-documentation)
+Clone Link: https://anvil.works/build#clone:KW3ZQNP7C5I5MMZQ=LNH6TDTWKQEG5G4P2G7XUVC4
 
-## Opening this app in Anvil and getting it online
+___
 
-### Cloning the app
+**Usage**
 
-Go to the [Anvil Editor](https://anvil.works/build?utm_source=github:app_README) (you might need to sign up for a free account) and click on “Clone from GitHub” (underneath the “Blank App” option):
+```python
+from toastify import toastify
+toastify.Toast("Hello World", style="info", timeout = 5, position = "top-right")
+With Server Calls
 
-<img src="https://anvil.works/docs/version-control-new-ide/img/git/clone-from-github.png" alt="Clone from GitHub"/>
+with toastify.Toast("Making call to Server", style="loading") as toast:
+    try:
+        anvil.server.call_s('get_data_from_server')
+        toast.update("success","Data fetched from Server")
+    except:
+        toast.update("danger","Failed to Fetch Data from Server")
+```
 
-Enter the URL of this GitHub repository. If you're not yet logged in, choose "GitHub credentials" as the authentication method and click "Connect to GitHub".
+## 🍞 Toast API Reference
 
-<img src="https://anvil.works/docs/version-control-new-ide/img/git/clone-app-from-git.png" alt="Clone App from Git modal"/>
+### Toast Parameters
 
-Finally, click "Clone App".
+| Parameter   | Description                                                                 | Accepted Values                                                                 | Default      |
+|-------------|-----------------------------------------------------------------------------|----------------------------------------------------------------------------------|--------------|
+| `message`   | The text to display in the toast.                                            | *String*                                                                         | —            |
+| `style`     | Style of the toast.                                                         | `success`, `info`, `warning`, `danger`, `loading`                               | `info`       |
+| `position`  | Position of the toast on the screen.                                        | `top-left`, `top-right`, `top-center`, `bottom-left`, `bottom-right`, `bottom-center` | `top-right` |
+| `timeout`   | Duration (in seconds) the toast will be shown.                              | *Number (seconds)*                                                               | `2`          |
 
-This app will then be in your Anvil account, ready for you to run it or start editing it! **Any changes you make will be automatically pushed back to this repository, if you have permission!** You might want to [make a new branch](https://anvil.works/docs/version-control-new-ide?utm_source=github:app_README).
+### Toast Methods
 
-### Running the app yourself:
+- `hide()`  
+  Hides the toast manually.
 
-Find the **Run** button at the top-right of the Anvil editor:
+- `update(new_style, new_text)`  
+  Updates an existing toast’s style and message.
 
-<img src="https://anvil.works/docs/img/run-button-new-ide.png"/>
+---
 
+## 🎁 Extra Features
 
-### Publishing the app on your own URL
+- Smooth **animation** on entry and exit.
+- **Progress bar** indicating the time remaining (based on `timeout`).
+- **Swipe to dismiss** (mobile-friendly).
+  
+---
 
-Now you've cloned the app, you can [deploy it on the internet with two clicks](https://anvil.works/docs/deployment/quickstart?utm_source=github:app_README)! Find the **Publish** button at the top-right of the editor:
+## 🔁 Replacing Notifications with Toasts
 
-<img src="https://anvil.works/docs/deployment-new-ide/img/environments/publish-button.png"/>
+Since `Toast` accepts the same parameters as Anvil's `Notification`, you can easily switch between them:
 
-When you click it, you will see the Publish dialog:
+```python
+# With Notification
+with Notification("Doing Operation", style="info", timeout=4):
+    ...
 
-<img src="https://anvil.works/docs/deployment-new-ide/img/quickstart/empty-environments-dialog.png"/>
+# With Toast
+with toastify.Toast("Doing Operation", style="info", timeout=4):
+    ...
+```
 
-Click **Publish This App**, and you will see that your app has been deployed at a new, public URL:
+## 🔧 Patching Notifications (Optional)
 
-<img src="https://anvil.works/docs/deployment-new-ide/img/quickstart/default-public-environment.png"/>
+If you'd prefer not to change all `Notification` references manually, you can patch Anvil's built-in `Notification` component to use `Toast` instead:
 
-That's it - **your app is now online**. Click the link and try it!
+```python
+from toastify import toastify
 
-## About Anvil
+# Call this once during your app's startup (e.g., in the startup form/module)
+toastify.patch_anvil_notifications()
 
-If you’re new to Anvil, welcome! Anvil is a platform for building full-stack web apps with nothing but Python. No need to wrestle with JS, HTML, CSS, Python, SQL and all their frameworks – just build it all in Python.
+# IMPORTANT: Ensure this comes *before* importing anything from Anvil
+from anvil import *
+```
 
-<figure>
-<figcaption><h3>Learn About Anvil In 80 Seconds👇</h3></figcaption>
-<a href="https://www.youtube.com/watch?v=3V-3g1mQ5GY" target="_blank">
-<img
-  src="https://anvil-website-static.s3.eu-west-2.amazonaws.com/anvil-in-80-seconds-YouTube.png"
-  alt="Anvil In 80 Seconds"
-/>
-</a>
-</figure>
-<br><br>
-
-[![Try Anvil Free](https://anvil-website-static.s3.eu-west-2.amazonaws.com/mark-complete.png)](https://anvil.works?utm_source=github:app_README)
-
-To learn more about Anvil, visit [https://anvil.works](https://anvil.works?utm_source=github:app_README).
-
-## Tutorials and documentation
-
-### Tutorials
-
-If you are just starting out with Anvil, why not **[try the 10-minute Feedback Form tutorial](https://anvil.works/learn/tutorials/feedback-form?utm_source=github:app_README)**? It features step-by-step tutorials that will introduce you to the most important parts of Anvil.
-
-Anvil has tutorials on:
-- [Building Dashboards](https://anvil.works/learn/tutorials/data-science#dashboarding?utm_source=github:app_README)
-- [Multi-User Applications](https://anvil.works/learn/tutorials/multi-user-apps?utm_source=github:app_README)
-- [Building Web Apps with an External Database](https://anvil.works/learn/tutorials/external-database?utm_source=github:app_README)
-- [Deploying Machine Learning Models](https://anvil.works/learn/tutorials/deploy-machine-learning-model?utm_source=github:app_README)
-- [Taking Payments with Stripe](https://anvil.works/learn/tutorials/stripe?utm_source=github:app_README)
-- And [much more....](https://anvil.works/learn/tutorials?utm_source=github:app_README)
-
-### Reference Documentation
-
-The Anvil reference documentation provides comprehensive information on how to use Anvil to build web applications. You can find the documentation [here](https://anvil.works/docs/overview?utm_source=github:app_README).
-
-If you want to get to the basics as quickly as possible, each section of this documentation features a [Quick-Start Guide](https://anvil.works/docs/overview/quickstarts?utm_source=github:app_README).
+> **⚠️ Warning:** This approach will override Anvil’s default Notification behavior across the entire app. As a result, the original Anvil Notification component will no longer be available. Use with caution.
